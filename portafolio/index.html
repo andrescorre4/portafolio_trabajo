@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida - JUAN FELIPE FLOREZ HENAO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #7f8c8d;
+            --highlight-color: #2980b9;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            display: flex;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 30px;
+            width: 35%;
+        }
+
+        .main-content {
+            padding: 40px 35px;
+            width: 65%;
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: var(--highlight-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .name {
+            font-size: 2.2em;
+            margin: 0 0 15px 0;
+            color: white;
+            font-weight: 700;
+            border-bottom: 2px solid var(--highlight-color);
+            padding-bottom: 15px;
+        }
+
+        .section-title {
+            color: var(--highlight-color);
+            font-size: 1.2em;
+            margin: 35px 0 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .contact-info div {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+
+        .contact-info i {
+            margin-right: 12px;
+            width: 25px;
+            font-size: 1.1em;
+            color: var(--highlight-color);
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            margin: 10px 0;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid var(--highlight-color);
+        }
+
+        .experience-item {
+            margin: 25px 0;
+            padding-left: 20px;
+            border-left: 2px solid var(--secondary-color);
+        }
+
+        .experience-item h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+
+        .date {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .company {
+            color: var(--highlight-color);
+            font-weight: 500;
+            display: block;
+            margin: 5px 0 10px;
+        }
+
+        .education-item {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        @media print {
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="generatePDF()">
+        <i class="fas fa-file-pdf"></i> Descargar PDF
+    </button>
+
+    <div class="container" id="cv-content">
+        <div class="sidebar">
+<h1 class="name">JUAN FELIPE FLOREZ HENAO</h1>
+<img src="profile.jpg" alt="Profile Photo" class="profile-photo" style="width: 100%; max-width: 200px; margin-top: 20px; border-radius: 50%;">
+            
+            <div class="section-title">Contacto</div>
+            <div class="contact-info">
+                <div><i class="fas fa-envelope"></i>juanfelipefloreshenao71@gmail.com</div>
+                <div><i class="fas fa-phone"></i>+57 3042249791</div>
+                <div><i class="fab fa-linkedin"></i>/juan-florez-dev</div>
+                <div><i class="fab fa-github"></i>github.com/juanfelipe-dev</div>
+                <div><i class="fas fa-map-marker-alt"></i>andes, antioquia</div>
+            </div>
+
+            <div class="section-title">Habilidades</div>
+            <ul class="skill-list">
+                <li>HTML5, CSS3, JavaScript</li>
+                <li>Python, SQL</li>
+                <li>Desarrollo Frontend</li>
+                
+                <li>Bases de Datos</li>
+                <li>Trabajo en Equipo</li>
+                <li>Git y Control de Versiones</li>
+            </ul>
+
+            <div class="section-title">Idiomas</div>
+            <div class="language-skills">
+                <div class="skill-item">
+                    <span>Español - Nativo</span>
+                </div>
+                <div class="skill-item">
+                    <span>Inglés - Intermedio</span>
+                </div>
+            </div>
+        </div>
+
+            <div class="main-content">
+                <div class="section-title">SOBRE MI</div>
+                <div class="additional-info">
+                    <p>  Desarrollador de software con  experiencia especializado en crear paginas web en html , css , JavaScript y Python.</p>
+                </div>
+
+                <div class="section-title">Experiencia Profesional</div>
+                
+                <div class="experience-item">
+                    <h3>Desarrollador Web</h3>
+                    <span class="company">CESDE</span>
+                    <span class="date">Agosto 2024 - Noviembre 2024</span>
+                    <ul>
+                        <li>Diseño y desarrollo de aplicaciones web utilizando HTML, CSS, JavaScript</li>
+                        <li>Colaboración en equipo a través de herramientas como Github y Google WorkSpace</li>
+                        <li>Creación de scripts con Python</li>
+                        <li>Diseño y creación de Base de datos SQL</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Desarrollador Frontend</h3>
+                    <span class="company">Institución Educativa San Peruchito</span>
+                    <span class="date">Enero 2025 - Presente</span>
+                    <ul>
+                        <li>Desarrollo de interfaces de usuario responsivas con HTML5, CSS3 y JavaScript</li>
+                        <li>Diseño de chatbots con Python</li>
+                        <li>Diseño y creación de Base de datos SQLite</li>
+                        <li>Desarrollo de sistema de certificación estudiantil</li>
+                    </ul>
+                </div>
+
+                <div class="section-title">Educación</div>
+                <div class="education-item">
+                    <h3>Técnico Laboral en Desarrollo de Software</h3>
+                    <span class="company">CESDE</span>
+                    <span class="date">2024</span>
+                </div>
+            </div>
+    </div>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('cv-content');
+            const options = {
+                scale: 2,
+                useCORS: true,
+                logging: true
+            };
+
+            html2canvas(element, options).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                let position = 0;
+                const pageHeight = 297;
+                
+                if (imgHeight < pageHeight) {
+                    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                } else {
+                    while (position < imgHeight) {
+                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        position -= pageHeight;
+                        
+                        if (position < imgHeight - pageHeight) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+                
+pdf.save('Hoja_de_Vida_Juan_Felipe_Florez_Henao.pdf');
+            });
+        }
+    </script>
+</body>
+</html>
